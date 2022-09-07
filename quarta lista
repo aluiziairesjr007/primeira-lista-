@@ -1,0 +1,40 @@
+lista de estruturas
+
+1- a,b,c
+#include<stdio.h>
+
+typedef struct ingresso{// estrutura do tipo ingresso
+	float preco;// variável do tipo inteira
+	char local[50];// variável do tipo caractere 
+	char atracao[50];// variavel do tipo caractere 
+}ingresso;
+void preenche(ingresso* i);// função preenche
+void imprime(ingresso* i);// função imprime
+void altera_preco(ingresso* i, float valor); //função altera_preco
+
+int main(){// função principal
+	ingresso p;// variável p do tipo ingresso 
+	preenche (&p);// chamada da função preenche
+	altera_preco (&p, 10);chamada da função imprime
+	imprime (&p);chamada da função altera_preco
+	return 0;
+}
+
+ void preenche(ingresso* i){// função preenche e seus devidos calculos 
+	printf("preco do ingresso :");
+	scanf("%f", &i->preco );
+	printf("local :");
+	scanf(" %[^\n]", &i->local);
+	printf("qual sera a atracao :");
+	scanf(" %[^\n]", &i->atracao);
+}
+ void imprime(ingresso* i){função imprime e seus devidos calculos 
+	printf("preco do ingresso :\n (%f) ", i->preco);
+	printf("local :\n (%s) ", i->local);
+	printf("qual sera a atracao :\n (%s) ", i->atracao);
+	}
+ void altera_preco(ingresso* i, float valor){função altera_preco e seu calculo 
+ 	i->preco=valor;
+ }
+
+
