@@ -1,0 +1,224 @@
+Terceira lista 
+
+
+Questão 1-
+
+
+#include<stdio.h> // declaração de biblioteca
+#include<stdlib.h>  // declaração de biblioteca
+#include<locale.h>  // declaração de biblioteca
+
+int **soma(int **a, int **b, int n); // prototipo da função
+void mat_libera(int** mat, int n); // prototipo da função libera matriz
+int main(void){
+    int n, i, j; // declaração de variavel tipo int
+    setlocale(LC_ALL, "Portuguese");
+
+    printf("\n\n");
+    printf("Digite a dimensÃ£o da matriz nxn:\n "); //solicita ao usuario o valor da matriz 
+    scanf("%d", &n); // ler os dados 
+
+    int *a,*b; //declaração de ponteiro tipo int 
+    a=(int *)(malloc(n*sizeof(int))); //alcação dinamica de a
+    for(i=0;i<n;i++){ //laço de repetição 
+        a[i]=(int*)(malloc(n*sizeof(int)));
+    }
+    b=(int*)(malloc(n*sizeof(int))); //alocação dinamica de b
+    for(j=0;j<n;j++){
+        b[j]=(int*)(malloc(n*sizeof(int)));
+    }
+    printf("Matriz A:\n"); //passa pela marriz A e armazena seu valor
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
+            printf("Digite os elementos: ");
+            scanf("%d", &a[i][j]);
+        }
+    }
+    printf("Matriz B:\n");  //passa pela marriz B e armazena seu valor
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
+            printf("Digite os elementos: ");
+            scanf("%d", &b[i][j]);
+        }
+    }
+    int **matriz=soma(a, b, n); // chama a função que realiza a realiza a soma entre as matrizes
+    printf("A soma dos elementos de A + B \n");
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
+            printf(" %d \t ", matriz[i][j]);
+
+        }
+    }
+
+    mat_libera(a, n); //chamada da função que libera a matriz A 
+    mat_libera(b, n); //chamada da função que libera a matriz B
+
+
+    return(0);
+
+}
+
+
+void mat_libera(int** mat, int n){ //função que libera as matrizes A e B
+  int i;
+     for(i = 0; i < n; i++){
+        free(mat[i]); 
+     }
+    free(mat);
+}
+
+int **soma(int **a, int **b, int n){ // função que realiza a soma entre as matrizes A e B
+    int i, j;
+    int **resul;
+    resul=(int*)malloc(n*sizeof(int));
+    for(i=0;i<n;i++){
+        resul[i]=(int*)malloc(n*sizeof(int)); //alocação dinamica do resul em int
+    }
+    for( i=0;i<n;i++){
+        for(j=0;j<n;j++){ //laço de repetição que passa pelos valores das matrizes e realiza a soma
+            resul[i][j]=a[i][j]+b[i][j]; //soma
+        }
+    }
+    return resul;
+
+}
+
+
+questão 2-
+
+#include<stdio.h> //declaração de biblioteca
+#include<locale.h>//declaração de biblioteca
+#include<stdlib.h>//declaração de biblioteca
+int posicao(int **matriz, int n, int Posicao); //prototipo da função
+void mat_libera(int** mat, int n); //  //prototipo da função
+int main(void){
+	
+	int i, j, n; //declaração de variaveis
+	setlocale(LC_ALL, "Portuguese");
+ 	printf("Universidade Federal Rural do Semi-Árido\n ");
+ 	printf("Diciplina: PEX1243 \n");
+ 	printf("Aluna: Francisca Lorrayne");
+ 	printf("\n\n");
+	printf("Digite as dimensões da matriz: "); //solicitação ao usuario do tamanho da matriz
+	scanf("%d", &n); //ler os dados
+	
+	int *matriz=(int)(malloc(n*sizeof(int))); //alocação dinamica da matriz
+	for(i=0;i<n;i++){
+		matriz[i]=(int*)malloc(n*sizeof(int)); //aloca o vetor dinamicamente
+	}
+	for(i=0;i<n;i++){ //laço de repetição que passa pelas posiçoes da matriz uma por uma
+		for(j=0;j<n;j++){
+			printf("Digite a posição da matriz: "); //solicita a posição da matriz
+			scanf("%d", &matriz[i][j]); //ler a posição
+		}
+	}
+int r=posicao(matriz, n, 6); // retorno da função da matriz de posição
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			printf("Resultado:%d \n", r); //exibição junto com a chamada da função da posição da matriz
+	}
+}
+  mat_libera(matriz, n); //chamada da função para liberar espaço da matriz
+return 0;
+}
+void mat_libera(int** mat, int n){ //função sem retorno para liberar a matriz
+  int i;
+     for(i = 0; i < n; i++){
+        free(mat[i]); // libera cada uma das linhas
+     }
+    free(mat);
+}
+int posicao(int **matriz, int n, int p){ //função que mostra e armazena a posição da matriz
+	int i, j; //declaração de variaveis
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			if(matriz[i][j]==p){ // compapa a posição da matriz e verifica se ela esta dentro das dimensões da matriz, se for 
+				return 1; // retorna 1
+			}
+		}
+	}
+	return 0; // se não, retorna 0 
+
+}
+
+QUESTÃO 3
+
+
+#include <stdio.h> //declaração de biblioteca
+
+int main(void) {
+	int n, i, j; //declaração de variaveis
+	int mat[n][n]; //declaração de matriz
+	int soma_principal = 0, soma_secund = 0; // variavei de somas iniciadas em 0
+	printf("Digite a quantidade da matriz: "); //pedir ao usuario para digitar a quantidade da matriz
+	scanf("%i", &n);
+	
+	for (i = 0; i < n; i++) { //laço de repetição que recebe a quantidade por linha da matriz 
+		for (j = 0; j < n; j++) { 
+			printf("Digite as linhas da matriz:"); //solicita as linhas da matriz
+			scanf("%d", &mat[i][j]); //ler as informações 
+		}
+	}
+	for (i = 0; i < n; i++) { //laço de repetição que recebe a quantidade por coluna  da matriz 
+		for (j = 0; j < n; j++) {
+			printf("Digite as colunas da matriz: "); /solicita as colunas da matriz
+			printf("%d ", mat[i][j]);  //ler as informações 
+		}
+	}
+	//soma diagonal principal
+	for (i = 0; i < n; i++) {
+		soma_principal += mat[i][i];
+	}	
+	//soma diagonal secundária
+	for (i = 0; i < n; i++) {
+		soma_secund += mat[i][n-i-1];
+	}
+	//soma linhas
+	printf("\nSoma das linhas: ");
+	int vetL[n];
+	for (i = 0; i < n; i++) {
+		vetL[i] = 0;
+		for (j = 0; j < n; j++) {
+			vetL[i] += mat[i][j];
+		}
+	}
+	for (i = 0; i < n; i++) {
+		printf("%d ", vetL[i]); //exibição da quantidade de linhas
+	}
+
+	//soma colunas
+	printf("\nSoma das colunas: "); 
+	int vetC[n];
+	for (j = 0; j < n; j++) {
+		vetC[j] = 0;
+		for (i = 0; i < n; i++) {
+			vetC[j] += mat[i][j];
+		}
+	}
+	for (i = 0; i < n; i++) {
+		printf("%d ", vetC[i]); //exibição da quantidade de colunas
+	}
+	
+	printf("\nSoma diagonal principal %d e secundária %d\n", soma_principal, soma_secund); //exibição da soma principal e secundaria
+
+	int testaL = 1, testaC = 1; 
+	for (i = 1; i <  n; i++) {
+		if (vetL[i] != vetL[i-1]) { //testa se as linhas e colunas são iguais 
+			testaL = 0;
+			break;
+		} else if (vetC[i] != vetC[i-1]) {
+			testaC = 0;
+			break;
+		}
+	}
+	//testa se as linhas e colunas são iguais , caso seja 
+	if (testaL && testaC && soma_principal == soma_secund && soma_principal == vetL[0]) { 
+		printf("Quadrado magico"); // exibe que é magico
+	} else {
+		printf("Quadrado nao magico"); // exibe que não é magico
+	}
+
+	return 0;
+}
+
+
