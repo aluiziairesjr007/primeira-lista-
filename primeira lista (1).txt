@@ -1,0 +1,91 @@
+﻿primeira lista 
+
+
+
+
+1- x = 3, y = 1, p = 112.
+
+
+2-a) Erro, pois o computador não compila.
+
+
+b) Por que o algoritmo esta procurando o valor de *P.
+
+
+c) Não.
+
+
+d) int man(void){
+int x, *p;
+x = 100;
+p = x
+printf(“valor de p = %p\valor de *p = %d”, p, *p);
+}
+
+
+e) Não 
+
+
+3- 30   20   10.
+
+
+4- #include <stdio.h>
+#include <math.h>
+
+
+void calcula_hexagono(float l, float *area, float *perimetro){ // funcão que calcula o hexagono 
+*area = 3 * pow (l,2) * sqrt (3)/2;
+*perimetro = 6*l;
+}
+
+
+int main(void){ // função principal
+        float lados, perimetro, area; // variaveis do tipo real
+        printf("informe o valor de lados :"); // pedindo o valor dos lados 
+        scanf("%f", &lados); // lendo os valores dos lados 
+        calcula_hexagono(lados, &area, &perimetro); //chamada da função 
+        printf("O valor da area e %f", area); // informando o valor da area
+        printf("O valor do perimetro e %f", perimetro); // informando o valor do perimetro 
+        return 0;
+}
+
+
+5-#include<stdio.h>
+
+
+char situacao(float p1, float p2, float p3,int faltas, int aulas, float *media); // função situação 
+
+
+int main(){ // função principal 
+        float p1, p2, p3, media; // variáveis do tipo real
+        int faltas, aulas; // variáveis do tipo inteiro 
+        printf("informe a primeira nota da aluna :\n");// pedindo o valor da primeira nota
+        scanf("%f", &p1); 
+        printf("informe a segunda nota da aluna :\n");pedindo o valor da segunda nota
+        scanf("%f", &p2); // lendo a primeira nota
+        printf("informe a terceira nota da aluna :\n");pedindo o valor da terceira nota
+        scanf("%f", &p3); // lendo a segunda nota
+        printf("Qual a quantidade de aulas :\n");
+        scanf("%d", &aulas); // lendo a terceira nota 
+        printf("Qual a quantidade de faltas :\n");// pedindo a quantidades de faltas
+        scanf("%d", &faltas); // lendo a quantidade de faltas
+        situacao(p1, p2, p3, faltas, aulas, &media);// chamada da função 
+        printf("sua media e %d :\n", media);// mostrando o resultado da média 
+        return 0;
+}
+
+
+char situacao(float p1, float p2, float p3,int faltas, int aulas, float *media){ // função situação 
+*media = (p1 + p2 + p3) / 3;// valor da media
+int porcentagem_falta;// variaveis do tipo inteiro
+  porcentagem_falta = (100*faltas/aulas);// calculo pra porcentagem de faltas
+  if (porcentagem_falta <= 25 && *media >= 6){// laço de repetição 
+    printf("Aprovado\n");// informando que o aluno passou
+  } 
+  else if (porcentagem_falta <=25 && *media < 6){// laço de repetição 
+    printf("Reprovado\n");// informando que o aluno esta de reprovado 
+  }
+  else {
+    printf("Reprovado por faltas\n");// informando que o aluno está reprovado por faltas 
+  }
+}
